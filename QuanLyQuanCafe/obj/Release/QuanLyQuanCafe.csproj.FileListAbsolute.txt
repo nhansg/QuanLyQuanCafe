@@ -1,0 +1,51 @@
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.exe.config
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.exe
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.pdb
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.ChangePassWord.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fBanAn.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fCaLam.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fChamCong.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fChucVu.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fDanhMuc.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fLogin.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fManager.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fDoAnUong.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNguyenLieu.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhaCungCap.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhanVien.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhapHang.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fReport.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongKe.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongKeChamCong.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongTinTaiKhoan.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fXemChamCong.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.Properties.Resources.resources
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.csproj.GenerateResource.Cache
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.exe
+D:\visual studio 2013\Projects\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.pdb
+D:\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.exe.config
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.exe
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.pdb
+D:\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.exe
+D:\QuanLyQuanCafe\QuanLyQuanCafe\bin\Release\QuanLyQuanCafe.pdb
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.csprojResolveAssemblyReference.cache
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.ChangePassWord.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fBanAn.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fCaLam.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fChamCong.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fChucVu.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fDanhMuc.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fLogin.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fManager.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fDoAnUong.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNguyenLieu.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhaCungCap.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhanVien.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fNhapHang.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fReport.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongKe.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongKeChamCong.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fThongTinTaiKhoan.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.fXemChamCong.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.Properties.Resources.resources
+D:\QuanLyQuanCafe\QuanLyQuanCafe\obj\Release\QuanLyQuanCafe.csproj.GenerateResource.Cache
