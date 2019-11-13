@@ -76,3 +76,6 @@ D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQua
 D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.fXemChamCong.resources
 D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.Properties.Resources.resources
 D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\obj\Debug\QuanLyQuanCafe.csproj.GenerateResource.Cache
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\MetroFramework.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\MetroFramework.Fonts.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafe\bin\Debug\MetroFramework.Design.dll
