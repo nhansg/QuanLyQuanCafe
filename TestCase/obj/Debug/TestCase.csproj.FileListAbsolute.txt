@@ -1,0 +1,11 @@
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\TestCase.dll.config
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\TestCase.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\TestCase.pdb
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\obj\Debug\TestCase.csprojResolveAssemblyReference.cache
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\obj\Debug\TestCase.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\obj\Debug\TestCase.pdb
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\QuanLyQuanCafe.exe
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\MetroFramework.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\bin\Debug\QuanLyQuanCafe.pdb
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\obj\Debug\TestCase.SqlServerUnitTestAccount.resources
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\TestCase\obj\Debug\TestCase.csproj.GenerateResource.Cache

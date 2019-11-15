@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace QuanLyQuanCafe
 {
-    public partial class fBanAn : Form
+    public partial class fBanAn : MetroFramework.Forms.MetroForm
     {
         BindingSource bindingTable = new BindingSource();
         public fBanAn()
@@ -41,7 +41,6 @@ namespace QuanLyQuanCafe
             txbMaBan.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "MaBan"));
             txbTenBan.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "TenBan"));
             nmKhuVuc.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "KhuVuc"));
-            cmbTrangThai.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "TrangThai"));
             txbMieuTa.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "MieuTa"));
 
         }
@@ -49,12 +48,10 @@ namespace QuanLyQuanCafe
         private void btnThem_Click(object sender, EventArgs e)
         {
             string tenBan = txbTenBan.Text;
-            string trangThai = cmbTrangThai.Text;
             string khuVuc = nmKhuVuc.Value.ToString();
             string mieuTa = txbMieuTa.Text;
             
-
-            if (TableDAO.Instance.InsertBanAn(tenBan, trangThai, khuVuc, mieuTa))
+            if (TableDAO.Instance.InsertBanAn(tenBan,khuVuc,mieuTa))
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListTalbe();
@@ -63,19 +60,17 @@ namespace QuanLyQuanCafe
             }
             else
                 MessageBox.Show("Thêm không thành công");
-
         }
         
         private void btnSua_Click(object sender, EventArgs e)
         {
             string tenBan = txbTenBan.Text;
-            string trangThai = cmbTrangThai.Text;
             string khuVuc = nmKhuVuc.Text;
             string mieuTa = txbMieuTa.Text;
             int maBan = Convert.ToInt32(txbMaBan.Text);
             
 
-            if (TableDAO.Instance.UpdateBanAn(maBan,tenBan, trangThai, khuVuc,mieuTa))
+            if (TableDAO.Instance.UpdateBanAn(maBan,tenBan, khuVuc,mieuTa))
             {
                 MessageBox.Show("Sửa thành công");
                 LoadListTalbe();
@@ -106,36 +101,7 @@ namespace QuanLyQuanCafe
                 MessageBox.Show("Không có bàn để xóa");
            
         }
-        #region Pain
-        private void VeHinh(Graphics g, Rectangle rect)
-        {
-            Image img = Properties.Resources.coffeeBaner;
-            g.DrawImage(img, rect);
-        }
-        private void VeChu(Graphics g, Rectangle rect)
-        {
-            Font font = new Font("Arial", 15);
-            Color color = Color.Honeydew;
-            SolidBrush br = new SolidBrush(color);
-            StringFormat format = new StringFormat();
-            format.LineAlignment = StringAlignment.Far;
-            format.Alignment = StringAlignment.Near;
-            g.DrawString(this.Text, font, br, rect, format);
-        }
 
-         private void fBanAn_SizeChanged(object sender, EventArgs e)
-        {
-             Invalidate();
-        }
-
-        private void fBanAn_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle rect = new Rectangle(0, 0, ClientRectangle.Width, 50);
-            Rectangle rect1 = new Rectangle(0, 0, 200, 50);
-            VeHinh(e.Graphics, rect);
-            VeChu(e.Graphics, rect1);
-        }
-#endregion
         #region events
         private event EventHandler insertTable;
         public event EventHandler InsertTable
@@ -155,16 +121,25 @@ namespace QuanLyQuanCafe
             add { updateTable += value; }
             remove { updateTable -= value; }
         }
+
+
+
+
+
+
+
+
         #endregion
 
-        
-    
+        private void fBanAn_Load(object sender, EventArgs e)
+        {
 
+        }
 
+        private void dtgvBanAn_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
-
-
+        }
     }
         
 }

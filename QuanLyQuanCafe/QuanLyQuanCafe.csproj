@@ -281,12 +281,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\coffeeBaner.jpg" />
+    <None Include="Resources\NotFound.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NotFound.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\coffeecup1.png" />
@@ -295,10 +294,19 @@
     <None Include="bin\Debug\coffeecup2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\coffeeBaner.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <Content Include="Resources\coffeecup1.png" />
+    <Content Include="Resources\coffeecup2.png" />
+    <Content Include="Resources\delete.png" />
+    <None Include="Resources\window-cleaning.png" />
+    <None Include="Resources\user.png" />
+    <None Include="Resources\id.png" />
+    <None Include="Resources\loading.png" />
+    <Content Include="Resources\login %281%29.png" />
+    <Content Include="Resources\login.jpg" />
+    <Content Include="Resources\password.png" />
+    <Content Include="Resources\plus.png" />
+    <Content Include="Resources\refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

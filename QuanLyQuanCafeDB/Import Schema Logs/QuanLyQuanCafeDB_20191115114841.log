@@ -1,0 +1,72 @@
+15/11/2019 6:48:41 PM	This log contains information about the import schema operation into project 'QuanLyQuanCafeDB' on computer 'NHAN-PC' by user 'NHAN'.
+15/11/2019 6:48:41 PM	Import of database schema has started.
+15/11/2019 6:48:48 PM	Gathering database options
+15/11/2019 6:48:48 PM	Gathering users
+15/11/2019 6:48:48 PM	Gathering roles
+15/11/2019 6:48:48 PM	Gathering application roles
+15/11/2019 6:48:48 PM	Gathering role memberships
+15/11/2019 6:48:48 PM	Gathering filegroups
+15/11/2019 6:48:48 PM	Gathering full-text catalogs
+15/11/2019 6:48:48 PM	Gathering assemblies
+15/11/2019 6:48:48 PM	Gathering certificates
+15/11/2019 6:48:48 PM	Gathering asymmetric keys
+15/11/2019 6:48:48 PM	Gathering symmetric keys
+15/11/2019 6:48:48 PM	Gathering encrypted symmetric keys
+15/11/2019 6:48:48 PM	Gathering schemas
+15/11/2019 6:48:48 PM	Gathering XML schema collections
+15/11/2019 6:48:48 PM	Gathering user-defined data types
+15/11/2019 6:48:48 PM	Gathering user-defined types
+15/11/2019 6:48:48 PM	Gathering table types
+15/11/2019 6:48:48 PM	Gathering unique keys for table types
+15/11/2019 6:48:48 PM	Gathering primary keys for table types
+15/11/2019 6:48:48 PM	Gathering check constraints for table types
+15/11/2019 6:48:48 PM	Gathering default constraints for table types
+15/11/2019 6:48:48 PM	Gathering partition functions
+15/11/2019 6:48:48 PM	Gathering partition schemes
+15/11/2019 6:48:48 PM	Gathering functions
+15/11/2019 6:48:48 PM	Gathering encrypted functions
+15/11/2019 6:48:48 PM	Gathering aggregates
+15/11/2019 6:48:48 PM	Gathering procedures
+15/11/2019 6:48:48 PM	Gathering encrypted procedures
+15/11/2019 6:48:48 PM	Gathering tables
+15/11/2019 6:48:48 PM	Gathering primary keys
+15/11/2019 6:48:48 PM	Gathering unique constraints
+15/11/2019 6:48:48 PM	Gathering foreign keys
+15/11/2019 6:48:48 PM	Gathering default constraints
+15/11/2019 6:48:48 PM	Gathering check constraints
+15/11/2019 6:48:48 PM	Gathering views
+15/11/2019 6:48:48 PM	Gathering encrypted views
+15/11/2019 6:48:48 PM	Gathering indexes
+15/11/2019 6:48:48 PM	Gathering statistics
+15/11/2019 6:48:48 PM	Gathering full-text index stoplists
+15/11/2019 6:48:48 PM	Gathering full-text indexes
+15/11/2019 6:48:48 PM	Gathering spatial indexes
+15/11/2019 6:48:48 PM	Gathering XML indexes
+15/11/2019 6:48:48 PM	Gathering encrypted triggers
+15/11/2019 6:48:48 PM	Gathering triggers
+15/11/2019 6:48:48 PM	Gathering encrypted and clr ddl triggers
+15/11/2019 6:48:48 PM	Gathering ddl triggers
+15/11/2019 6:48:48 PM	Gathering synonyms
+15/11/2019 6:48:48 PM	Gathering defaults
+15/11/2019 6:48:48 PM	Gathering data constraint uddt bindings
+15/11/2019 6:48:48 PM	Gathering rules
+15/11/2019 6:48:48 PM	Gathering data constraint uddt bindings
+15/11/2019 6:48:48 PM	Gathering message types
+15/11/2019 6:48:48 PM	Gathering queues
+15/11/2019 6:48:48 PM	Gathering contracts
+15/11/2019 6:48:48 PM	Gathering services
+15/11/2019 6:48:48 PM	Gathering event notifications
+15/11/2019 6:48:48 PM	Gathering remote service bindings
+15/11/2019 6:48:48 PM	Gathering broker priorities
+15/11/2019 6:48:48 PM	Gathering signatures
+15/11/2019 6:48:48 PM	Gathering data compression options
+15/11/2019 6:48:48 PM	Gathering database permissions
+15/11/2019 6:48:48 PM	Gathering extended properties
+15/11/2019 6:48:48 PM	Gathering credentials
+15/11/2019 6:48:48 PM	Gathering logins
+15/11/2019 6:48:48 PM	Gathering server audits
+15/11/2019 6:48:49 PM	Scanning project for duplicate elements
+15/11/2019 6:48:49 PM	Finished duplicate element processing
+15/11/2019 6:48:50 PM	Finished importing database.
+15/11/2019 6:48:50 PM	A summary of the import was saved to the following location: D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\Import Schema Logs\QuanLyQuanCafeDB_20191115114841.log
+15/11/2019 6:48:50 PM	Click Finish to continue...

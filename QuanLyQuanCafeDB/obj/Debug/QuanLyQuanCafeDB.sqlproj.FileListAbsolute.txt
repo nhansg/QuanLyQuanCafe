@@ -1,0 +1,5 @@
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\bin\Debug\QuanLyQuanCafeDB.dacpac
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\bin\Debug\QuanLyQuanCafeDB.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\bin\Debug\QuanLyQuanCafeDB.pdb
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\obj\Debug\QuanLyQuanCafeDB.dll
+D:\1551010086_Lê Thành Nhân\QuanLyQuanCafe\QuanLyQuanCafeDB\obj\Debug\QuanLyQuanCafeDB.pdb

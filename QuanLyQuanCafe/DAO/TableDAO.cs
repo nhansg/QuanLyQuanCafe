@@ -23,7 +23,7 @@ namespace QuanLyQuanCafe.DAO
 
         public static int TableWidth = 50;
         public static int TableHight = 60;
-        private TableDAO() { }
+        public TableDAO() { }
 
         public List<Table> LoadTableList()
         {
@@ -38,16 +38,16 @@ namespace QuanLyQuanCafe.DAO
             }
             return tableList;
         }
-        public bool InsertBanAn(string tenBan, string TrangThai, string khuVuc,string mieuTa)
+        public bool InsertBanAn(string tenBan,string khuVuc,string mieuTa)
         {
-            string query = string.Format("INSERT dbo.BanAn(TenBan,TrangThai,KhuVuc,MieuTa) VALUES (N'{0}',N'{1}',N'{2}',N'{3}')", tenBan, TrangThai, khuVuc,mieuTa);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            string query = "EXEC insertTable @tenBan , @khuVuc , @mieuTa";
+            int result = DataProvider.Instance.ExecuteNonQuery(query,new object[] {tenBan, khuVuc, mieuTa});
 
             return result > 0;
         }
-        public bool UpdateBanAn(int maBan,string tenBan, string TrangThai, string khuVuc, string mieuTa)
+        public bool UpdateBanAn(int maBan,string tenBan, string khuVuc, string mieuTa)
         {
-            string query = string.Format("UPDATE dbo.BanAn SET TenBan = N'{0}',TrangThai =N'{1}',KhuVuc=N'{2}',MieuTa=N'{3}' WHERE MaBan={4}", tenBan, TrangThai, khuVuc, mieuTa,maBan);
+            string query = string.Format("UPDATE dbo.BanAn SET TenBan = N'{0}',KhuVuc=N'{1}',MieuTa=N'{2}' WHERE MaBan={3}", tenBan, khuVuc, mieuTa,maBan);
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;

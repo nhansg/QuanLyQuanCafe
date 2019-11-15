@@ -13,7 +13,7 @@ using QuanLyQuanCafe.DTO;
 
 namespace QuanLyQuanCafe
 {
-    public partial class fThongTinTaiKhoan : Form
+    public partial class fThongTinTaiKhoan : MetroFramework.Forms.MetroForm
     {
         private Account loginAccount;
 
@@ -34,39 +34,7 @@ namespace QuanLyQuanCafe
             
         }
         #endregion
-        #region Pain
-        private void VeHinh(Graphics g, Rectangle rect)
-        {
-            Image img = Image.FromFile(@"D:\coffeeBaner.jpg");
-            g.DrawImage(img, rect);
-        }
-        private void VeChu(Graphics g, Rectangle rect)
-        {
-            Font font = new Font("Arial", 15);
-            Color color = Color.Honeydew;
-            SolidBrush br = new SolidBrush(color);
-            StringFormat format = new StringFormat();
-            format.LineAlignment = StringAlignment.Far;
-            format.Alignment = StringAlignment.Near;
-            g.DrawString(this.Text, font, br, rect, format);
-        }
-       
-        private void fThongTinTaiKhoan_Paint(object sender, PaintEventArgs e)
-        {
-            Rectangle rect = new Rectangle(0, 0, ClientRectangle.Width,50);
-            Rectangle rect1 = new Rectangle(0, 0, 200,50);
-            VeHinh(e.Graphics, rect);
-            VeChu(e.Graphics, rect1);
-        }
-
-        private void fThongTinTaiKhoan_SizeChanged(object sender, EventArgs e)
-        {
-            Invalidate();
-        }
-  
-        #endregion
         BindingSource bindingAccount = new BindingSource();
-
         void LoadAccountList()
         {
             LoadAccount();
@@ -90,22 +58,6 @@ namespace QuanLyQuanCafe
             txbPass.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "PassWord"));
             nmType.DataBindings.Add(new Binding("Value", dtgvAccount.DataSource, "LoaiTaiKhoan"));
             txbTen.DataBindings.Add(new Binding("Text", dtgvAccount.DataSource, "TenTaiKhoan"));
-
-        }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            string tenTaiKhoan = txbTen.Text;
-            string tenHienThi = txbHienThi.Text;
-            int type = (int)nmType.Value;
-            if (AccountDAO.Instance.InsertAccount(tenTaiKhoan,tenHienThi,type))
-            {
-                MessageBox.Show("Thêm thành công");
-                LoadAccount();
-            }
-            else
-                MessageBox.Show("Thêm không thành công");
-
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -117,22 +69,26 @@ namespace QuanLyQuanCafe
             
             int id = Convert.ToInt32(txbID.Text);
 
+            Account accountTrung = AccountDAO.Instance.AccountByUser(tenTaiKhoan);
 
-            if (AccountDAO.Instance.UpdateListAccount(id,tenTaiKhoan,tenHienThi,pass,type))
-            {
-                MessageBox.Show("Sửa thành công");
-                LoadAccount();
-            }
+            if (accountTrung.IdAccount != id && accountTrung.TenTaiKhoan == tenTaiKhoan)
+                MessageBox.Show("Tên muốn sửa đã có");
             else
-                MessageBox.Show("Sửa không thành công");
+            {
+                if (AccountDAO.Instance.UpdateListAccount(id, tenTaiKhoan, tenHienThi, pass, type))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    LoadAccount();
+                }
+                else
+                    MessageBox.Show("Sửa không thành công");
+            }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txbID.Text);
             DeleteAccount(id);
         }
-
         void DeleteAccount(int id)
         {
             if(loginAccount.IdAccount.Equals(id))
@@ -148,13 +104,32 @@ namespace QuanLyQuanCafe
             else
                 MessageBox.Show("Xóa không thành công");
         }
-        private void btnThoat_Click(object sender, EventArgs e)
+
+        private void btnThem_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            string tenTaiKhoan = txbTen.Text;
+            string tenHienThi = txbHienThi.Text;
+            int type = (int)nmType.Value;
+            if (AccountDAO.Instance.AccountByUser(tenTaiKhoan) == null)
+            {
+                if (AccountDAO.Instance.InsertAccount(tenTaiKhoan, tenHienThi, type))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    LoadAccount();
+                }
+                else
+                    MessageBox.Show("Thêm không thành công");
+            }
+            else
+                MessageBox.Show("Đã tồn tại tên tài khoản " + tenTaiKhoan);
         }
 
- 
-
- 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txbHienThi.Clear();
+            txbID.Clear();
+            txbPass.Clear();
+            txbTen.Clear();
+        }
     }
 }

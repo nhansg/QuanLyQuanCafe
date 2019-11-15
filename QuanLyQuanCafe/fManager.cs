@@ -20,8 +20,13 @@ namespace QuanLyQuanCafe
         public Account LoginAccount
         {
             get { return loginAccount; }
-            set { loginAccount = value; ChangeAccount(LoginAccount.LoaiTaiKhoan); }
+            set {
+                loginAccount = value;
+                ChangeAccount(LoginAccount.LoaiTaiKhoan);
+            }
         }
+
+
         public fManager(Account acc)
         {
             InitializeComponent();
@@ -366,7 +371,7 @@ namespace QuanLyQuanCafe
                         break;
                     case 2:
                         flpTable2.Controls.Add(btn);
-                        break;      
+                        break;                      
                 }
                 btn.Click +=btn_Click;
                 btn.Tag = item;
