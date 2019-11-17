@@ -116,7 +116,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.dtgvDanhMuc);
-            this.panel1.Location = new System.Drawing.Point(13, 180);
+            this.panel1.Location = new System.Drawing.Point(296, 60);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(277, 114);
             this.panel1.TabIndex = 1;
@@ -125,7 +125,7 @@
             // 
             this.dtgvDanhMuc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvDanhMuc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvDanhMuc.Location = new System.Drawing.Point(4, 4);
+            this.dtgvDanhMuc.Location = new System.Drawing.Point(4, 7);
             this.dtgvDanhMuc.Name = "dtgvDanhMuc";
             this.dtgvDanhMuc.Size = new System.Drawing.Size(263, 107);
             this.dtgvDanhMuc.TabIndex = 0;
@@ -134,18 +134,17 @@
             // 
             this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.btnThoat);
-            this.panel2.Controls.Add(this.btnXem);
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.btnThem);
-            this.panel2.Location = new System.Drawing.Point(13, 300);
+            this.panel2.Location = new System.Drawing.Point(296, 180);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(277, 48);
             this.panel2.TabIndex = 9;
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(217, 13);
+            this.btnThoat.Location = new System.Drawing.Point(206, 13);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(50, 25);
             this.btnThoat.TabIndex = 4;
@@ -155,43 +154,55 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(9, 13);
+            this.btnXem.Image = global::QuanLyQuanCafe.Properties.Resources.loading;
+            this.btnXem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXem.Location = new System.Drawing.Point(223, 193);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(44, 25);
+            this.btnXem.Size = new System.Drawing.Size(67, 25);
             this.btnXem.TabIndex = 3;
-            this.btnXem.Text = "Xem";
+            this.btnXem.Text = "Refresh";
+            this.btnXem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(167, 13);
+            this.btnXoa.Image = global::QuanLyQuanCafe.Properties.Resources.delete;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(135, 13);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(44, 25);
+            this.btnXoa.Size = new System.Drawing.Size(65, 25);
             this.btnXoa.TabIndex = 2;
-            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Text = "Delete";
+            this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnXoa.UseVisualStyleBackColor = true;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
             this.btnSua.AutoSize = true;
-            this.btnSua.Location = new System.Drawing.Point(117, 13);
+            this.btnSua.Image = global::QuanLyQuanCafe.Properties.Resources.refresh;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(64, 13);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(44, 25);
+            this.btnSua.Size = new System.Drawing.Size(65, 25);
             this.btnSua.TabIndex = 1;
-            this.btnSua.Text = "Sửa";
+            this.btnSua.Text = "Update";
+            this.btnSua.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
             this.btnThem.AllowDrop = true;
-            this.btnThem.Location = new System.Drawing.Point(59, 13);
+            this.btnThem.Image = global::QuanLyQuanCafe.Properties.Resources.plus;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(3, 13);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(50, 25);
+            this.btnThem.Size = new System.Drawing.Size(55, 25);
             this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
+            this.btnThem.Text = "Add";
+            this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
@@ -199,8 +210,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 356);
+            this.ClientSize = new System.Drawing.Size(590, 241);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "fDanhMuc";

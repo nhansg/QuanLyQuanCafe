@@ -44,12 +44,13 @@
             this.metroPanel1.Controls.Add(this.btnDangNhap);
             this.metroPanel1.Controls.Add(this.txbPassWord);
             this.metroPanel1.Controls.Add(this.txbTenDangNhap);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(3, 63);
+            this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(280, 134);
+            this.metroPanel1.Size = new System.Drawing.Size(292, 95);
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -60,17 +61,17 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(144, 128);
+            this.pictureBox1.Size = new System.Drawing.Size(144, 87);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Location = new System.Drawing.Point(183, 96);
+            this.btnDangNhap.Location = new System.Drawing.Point(183, 67);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(75, 23);
-            this.btnDangNhap.TabIndex = 4;
+            this.btnDangNhap.TabIndex = 2;
             this.btnDangNhap.Text = "Login";
             this.btnDangNhap.UseSelectable = true;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -92,7 +93,7 @@
             this.txbPassWord.DisplayIcon = true;
             this.txbPassWord.Icon = ((System.Drawing.Image)(resources.GetObject("txbPassWord.Icon")));
             this.txbPassWord.Lines = new string[0];
-            this.txbPassWord.Location = new System.Drawing.Point(153, 58);
+            this.txbPassWord.Location = new System.Drawing.Point(153, 35);
             this.txbPassWord.MaxLength = 32767;
             this.txbPassWord.Name = "txbPassWord";
             this.txbPassWord.PasswordChar = '●';
@@ -102,7 +103,7 @@
             this.txbPassWord.SelectionStart = 0;
             this.txbPassWord.ShortcutsEnabled = true;
             this.txbPassWord.Size = new System.Drawing.Size(124, 26);
-            this.txbPassWord.TabIndex = 3;
+            this.txbPassWord.TabIndex = 1;
             this.txbPassWord.UseSelectable = true;
             this.txbPassWord.UseSystemPasswordChar = true;
             this.txbPassWord.WaterMark = "Mật khẩu";
@@ -127,17 +128,18 @@
             this.txbTenDangNhap.DisplayIcon = true;
             this.txbTenDangNhap.Icon = ((System.Drawing.Image)(resources.GetObject("txbTenDangNhap.Icon")));
             this.txbTenDangNhap.Lines = new string[0];
-            this.txbTenDangNhap.Location = new System.Drawing.Point(153, 19);
+            this.txbTenDangNhap.Location = new System.Drawing.Point(153, 3);
             this.txbTenDangNhap.MaxLength = 32767;
             this.txbTenDangNhap.Name = "txbTenDangNhap";
             this.txbTenDangNhap.PasswordChar = '\0';
+            
             this.txbTenDangNhap.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbTenDangNhap.SelectedText = "";
             this.txbTenDangNhap.SelectionLength = 0;
             this.txbTenDangNhap.SelectionStart = 0;
             this.txbTenDangNhap.ShortcutsEnabled = true;
             this.txbTenDangNhap.Size = new System.Drawing.Size(124, 26);
-            this.txbTenDangNhap.TabIndex = 2;
+            this.txbTenDangNhap.TabIndex = 0;
             this.txbTenDangNhap.UseSelectable = true;
             this.txbTenDangNhap.WaterMark = "Tên đăng nhập";
             this.txbTenDangNhap.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -146,7 +148,7 @@
             // 
             // fLogin
             // 
-            this.ClientSize = new System.Drawing.Size(284, 200);
+            this.ClientSize = new System.Drawing.Size(332, 175);
             this.Controls.Add(this.metroPanel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "fLogin";

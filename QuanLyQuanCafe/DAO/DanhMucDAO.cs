@@ -29,21 +29,20 @@ namespace QuanLyQuanCafe.DAO
         public List<DanhMuc> LayDanhMuc()
         {
             List<DanhMuc> listDanhMuc = new List<DanhMuc>();
-            string query = "SELECT * FROM dbo.DanhMuc";
+            string query = "AllDanhMuc";
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach(DataRow item in data.Rows)
             {
                 DanhMuc danhmuc = new DanhMuc(item);
                 listDanhMuc.Add(danhmuc);
             }
-
             return listDanhMuc;
         }
         public DanhMuc LayDanhMucByMaDanhMuc(int maDanhMuc)
         {
             DanhMuc danhMuc = null;
-            string query = "SELECT * FROM dbo.DanhMuc WHERE MaDanhMuc =" +maDanhMuc ;
-            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            string query = "DanhMucSearch @maDM";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query,new object[] { maDanhMuc });
             foreach (DataRow item in data.Rows)
             {
                  danhMuc = new DanhMuc(item);
@@ -53,15 +52,15 @@ namespace QuanLyQuanCafe.DAO
         }
         public bool InsertDanhMuc(string tenDanhMuc)
         {
-            string query = string.Format("INSERT dbo.DanhMuc(TenDanhMuc) VALUES (N'{0}')",tenDanhMuc);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            string query = "InsertDanhMuc @tenDM";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { tenDanhMuc });
 
             return result > 0;
         }
         public bool UpdateDanhMuc(int maDanhMuc, string tenDanhMuc)
         {
-            string query = string.Format("UPDATE dbo.DanhMuc SET TenDanhMuc = N'{0}' WHERE MaDanhMuc={1}",tenDanhMuc,maDanhMuc);
-            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            string query = "UpdateDanhMuc @maDanhMuc , @tenDanhMuc";
+            int result = DataProvider.Instance.ExecuteNonQuery(query, new object[] { maDanhMuc, tenDanhMuc });
 
             return result > 0;
         }
@@ -77,6 +76,13 @@ namespace QuanLyQuanCafe.DAO
             int result = DataProvider.Instance.ExecuteNonQuery(query);
 
             return result > 0;
+        }
+        public bool CheckExist(string tenDanhMuc)
+        {
+            string query = "CheckDanhMuc @tenDanhMuc";
+
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {tenDanhMuc});
+            return result.Rows.Count > 0;
         }
     }
 }

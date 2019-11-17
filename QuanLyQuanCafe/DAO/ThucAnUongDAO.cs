@@ -51,6 +51,31 @@ namespace QuanLyQuanCafe.DAO
 
             return listThucAnUong;
         }
+
+        public List<ThucAnUong> SearchTaU(string foodName)
+        {
+            List<ThucAnUong> listThucAnUong = new List<ThucAnUong>();
+            string query = "SearchFood @food";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query,new object[] {foodName});
+            foreach (DataRow item in data.Rows)
+            {
+                ThucAnUong ThucAnUong = new ThucAnUong(item);
+                listThucAnUong.Add(ThucAnUong);
+            }
+
+            return listThucAnUong;
+        }
+        public ThucAnUong CheckExistTAU(string tenTAU)
+        {
+            string query = "CheckTAU @tenTaU";
+
+            DataTable result = DataProvider.Instance.ExecuteQuery(query, new object[] {tenTAU});
+            foreach (DataRow item in result.Rows)
+            {
+                return new ThucAnUong(item);
+            }
+            return null;
+        }
         public bool InsertThucAnUong(string tenTau,string hinhAnh,int maDanhMuc,float donGia,string mieuTa,float giamGia)
         {
             string query = string.Format("INSERT dbo.ThucAnUong(TenTAU,DonGia,MaDanhMuc,GiamGia,MieuTa,HinhAnh) VALUES (N'{0}',{1},{2},{3},N'{4}',N'{5}')" , tenTau , donGia , maDanhMuc , giamGia , mieuTa , hinhAnh);

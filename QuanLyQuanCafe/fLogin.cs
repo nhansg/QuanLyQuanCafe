@@ -76,5 +76,7 @@ namespace QuanLyQuanCafe
             if (e.KeyCode == Keys.Enter)
                 btnDangNhap.PerformClick();
         }
+
+
     }
 }

@@ -43,16 +43,21 @@ namespace QuanLyQuanCafe
         {
             int maDanhMuc = Convert.ToInt32(txbMaDanhMuc.Text);
             string tenDanhMuc = txbTenDanhMuc.Text;
-            if (DanhMucDAO.Instance.UpdateDanhMuc( maDanhMuc, tenDanhMuc))
-            {
-                MessageBox.Show("Sửa thành công");
-                 LoadDanhMuc() ;
-                 if (updateDanhMuc != null)
-                     updateDanhMuc(this, new EventArgs());
-             
-            }
+            if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+                MessageBox.Show("Đã có danh mục này không thể sửa trùng");
             else
-                MessageBox.Show("Sửa không thành công");
+            {
+                if (DanhMucDAO.Instance.UpdateDanhMuc(maDanhMuc, tenDanhMuc))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    LoadDanhMuc();
+                    if (updateDanhMuc != null)
+                        updateDanhMuc(this, new EventArgs());
+
+                }
+                else
+                    MessageBox.Show("Sửa không thành công");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -73,15 +78,20 @@ namespace QuanLyQuanCafe
         private void btnThem_Click(object sender, EventArgs e)
         {
             string tenDanhMuc = txbTenDanhMuc.Text;
-            if (DanhMucDAO.Instance.InsertDanhMuc(tenDanhMuc))
-            {
-                MessageBox.Show("Thêm thành công");
-                LoadDanhMuc();
-                if (insertDanhMuc != null)
-                    insertDanhMuc(this, new EventArgs());
-            }
+            if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+                MessageBox.Show("Đã có danh mục này không thể thêm trùng !");
             else
-                MessageBox.Show("Thêm không thành công");
+            {
+                if (DanhMucDAO.Instance.InsertDanhMuc(tenDanhMuc))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    LoadDanhMuc();
+                    if (insertDanhMuc != null)
+                        insertDanhMuc(this, new EventArgs());
+                }
+                else
+                    MessageBox.Show("Thêm không thành công");
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

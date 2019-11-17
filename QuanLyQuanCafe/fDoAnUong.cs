@@ -55,33 +55,51 @@ namespace QuanLyQuanCafe
         {
             if (dtgvDanhSachMon.SelectedCells.Count > 1)
             {
-                int maDanhMuc = (int)dtgvDanhSachMon.SelectedCells[0].OwningRow.Cells["MaDanhMuc"].Value;
-                
-                if(txbAnh.Text == "")
+                if (txbAnh.Text == "")
                 {
                     Image image = Properties.Resources.NotFound;
                     picThucAn.Image = image;
                 }
                 else
-               {
-                   Image image = Image.FromFile(@txbAnh.Text);
-                   picThucAn.Image = image;
-                }
-                DanhMuc danhMuc = DanhMucDAO.Instance.LayDanhMucByMaDanhMuc(maDanhMuc);
-
-                cmbLoaiMon.SelectedItem = danhMuc;
-                int index = -1;
-                int i = 0;
-                foreach (DanhMuc item in cmbLoaiMon.Items)
                 {
-                    if (item.MaDanhMuc == danhMuc.MaDanhMuc)
-                    {
-                        index = i;
-                    }
-                    i++;
+                    Image image = Image.FromFile(@txbAnh.Text);
+                    picThucAn.Image = image;
                 }
-                cmbLoaiMon.SelectedIndex = index;
             }
+            try
+            {
+                if (dtgvDanhSachMon.SelectedCells.Count >= 1)
+                {
+                    int maDanhMuc = (int)dtgvDanhSachMon.SelectedCells[0].OwningRow.Cells["MaDanhMuc"].Value;
+
+                    if (txbAnh.Text == "")
+                    {
+                        Image image = Properties.Resources.NotFound;
+                        picThucAn.Image = image;
+                    }
+                    else
+                    {
+                        Image image = Image.FromFile(@txbAnh.Text);
+                        picThucAn.Image = image;
+                    }
+
+                    DanhMuc danhMuc = DanhMucDAO.Instance.LayDanhMucByMaDanhMuc(maDanhMuc);
+
+                    cmbLoaiMon.SelectedItem = danhMuc;
+                    int index = -1;
+                    int i = 0;
+                    foreach (DanhMuc item in cmbLoaiMon.Items)
+                    {
+                        if (item.MaDanhMuc == danhMuc.MaDanhMuc)
+                        {
+                            index = i;
+                        }
+                        i++;
+                    }
+                    cmbLoaiMon.SelectedIndex = index;
+                }
+            }
+            catch { }
         }
      
         private void btnThem_Click(object sender, EventArgs e)
@@ -91,16 +109,20 @@ namespace QuanLyQuanCafe
             int maDanhMuc = (cmbLoaiMon.SelectedItem as DanhMuc).MaDanhMuc;
             float donGia = (float)Convert.ToDouble(txbDonGia.Text);
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
-
-            if (ThucAnUongDAO.Instance.InsertThucAnUong(tenTau,txbAnh.Text , maDanhMuc, donGia, mieuTa, giamGia))
-            {
-                MessageBox.Show("Thêm thành công");
-                loadDanhSachMon();
-                if (insertFood != null)
-                    insertFood(this, new EventArgs());
-            }
+            if (ThucAnUongDAO.Instance.CheckExistTAU(tenTau) != null)
+                MessageBox.Show("Đã có thức ăn này ! Không thể thêm trùng !!");
             else
-                MessageBox.Show("Thêm không thành công");
+            {
+                if (ThucAnUongDAO.Instance.InsertThucAnUong(tenTau, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    loadDanhSachMon();
+                    if (insertFood != null)
+                        insertFood(this, new EventArgs());
+                }
+                else
+                    MessageBox.Show("Thêm không thành công");
+            }
 
         }
 
@@ -127,15 +149,22 @@ namespace QuanLyQuanCafe
             float donGia = (float)Convert.ToDouble(txbDonGia.Text);
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
 
-            if (ThucAnUongDAO.Instance.UpdateThucAnUong(tenTau, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia,maTAU))
-            {
-                MessageBox.Show("Sửa thành công");
-                loadDanhSachMon();
-                if (updateFood != null)
-                    updateFood(this, new EventArgs());
-            }
+            ThucAnUong check = ThucAnUongDAO.Instance.CheckExistTAU(tenTau);
+
+            if (check.MaTAU != maTAU && check.TenTAU == tenTau)
+                MessageBox.Show("Tên muốn sửa đã có");
             else
-                MessageBox.Show("Sửa không thành công");
+            {
+                if (ThucAnUongDAO.Instance.UpdateThucAnUong(tenTau, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia, maTAU))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadDanhSachMon();
+                    if (updateFood != null)
+                        updateFood(this, new EventArgs());
+                }
+                else
+                    MessageBox.Show("Sửa không thành công");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -151,7 +180,12 @@ namespace QuanLyQuanCafe
             else
                 MessageBox.Show("Xóa không thành công");
         }
-
+        List<ThucAnUong> SearchTaU(string name)
+        {
+            List<ThucAnUong> resual = new List<ThucAnUong>();
+            resual = ThucAnUongDAO.Instance.SearchTaU(name);
+            return resual;
+        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -208,7 +242,11 @@ namespace QuanLyQuanCafe
             remove { updateFood -= value; }
         }
 
-        #endregion  
+        #endregion
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            bindingThucAnUong.DataSource = SearchTaU(txbSearch.Text);
+        }
     }
 }

@@ -206,7 +206,7 @@
             this.txbID.MaxLength = 32767;
             this.txbID.Name = "txbID";
             this.txbID.PasswordChar = '\0';
-            this.txbID.PromptText = "ID";
+          
             this.txbID.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbID.SelectedText = "";
             this.txbID.SelectionLength = 0;
@@ -240,7 +240,7 @@
             this.txbPass.MaxLength = 32767;
             this.txbPass.Name = "txbPass";
             this.txbPass.PasswordChar = '●';
-            this.txbPass.PromptText = "Password";
+ 
             this.txbPass.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbPass.SelectedText = "";
             this.txbPass.SelectionLength = 0;
@@ -275,7 +275,7 @@
             this.txbTen.MaxLength = 32767;
             this.txbTen.Name = "txbTen";
             this.txbTen.PasswordChar = '\0';
-            this.txbTen.PromptText = "Tên tài khoản";
+       
             this.txbTen.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbTen.SelectedText = "";
             this.txbTen.SelectionLength = 0;
@@ -309,7 +309,7 @@
             this.txbHienThi.MaxLength = 32767;
             this.txbHienThi.Name = "txbHienThi";
             this.txbHienThi.PasswordChar = '\0';
-            this.txbHienThi.PromptText = "Tên hiển thị";
+         
             this.txbHienThi.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbHienThi.SelectedText = "";
             this.txbHienThi.SelectionLength = 0;
