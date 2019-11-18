@@ -27,7 +27,11 @@ namespace QuanLyQuanCafe
         void LoadDanhMuc()
         {
             bindingDanhMuc.DataSource = DanhMucDAO.Instance.LayDanhMuc();
-            dtgvDanhMuc.DataSource = bindingDanhMuc;
+            try
+            {
+                dtgvDanhMuc.DataSource = bindingDanhMuc;
+            }
+            catch { }
         }
         void BindingDanhMuc()
         {
@@ -43,8 +47,20 @@ namespace QuanLyQuanCafe
         {
             int maDanhMuc = Convert.ToInt32(txbMaDanhMuc.Text);
             string tenDanhMuc = txbTenDanhMuc.Text;
-            if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+            updateDanhMucInDatabase(maDanhMuc, tenDanhMuc);
+        }
+        public bool updateDanhMucInDatabase(int maDanhMuc, string tenDanhMuc)
+        {
+            if (string.IsNullOrWhiteSpace(tenDanhMuc) || string.IsNullOrEmpty(tenDanhMuc))
+            {
+                MessageBox.Show("Không thể sửa !!");
+                return false;
+            }
+            else if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+            {
                 MessageBox.Show("Đã có danh mục này không thể sửa trùng");
+                return false;
+            }
             else
             {
                 if (DanhMucDAO.Instance.UpdateDanhMuc(maDanhMuc, tenDanhMuc))
@@ -53,33 +69,55 @@ namespace QuanLyQuanCafe
                     LoadDanhMuc();
                     if (updateDanhMuc != null)
                         updateDanhMuc(this, new EventArgs());
-
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Sửa không thành công");
+                    return false;
+                }
+
             }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int maDanhMuc = Convert.ToInt32(txbMaDanhMuc.Text);
+            deleteDanhMucInDatabase(maDanhMuc);
+        }
+        public bool deleteDanhMucInDatabase(int maDanhMuc)
+        {
             if (DanhMucDAO.Instance.DeleteDanhMuc(maDanhMuc))
             {
                 MessageBox.Show("Xóa thành công");
-
                 LoadDanhMuc();
                 if (deleteDanhMuc != null)
                     deleteDanhMuc(this, new EventArgs());
+                return true;
             }
             else
+            {
                 MessageBox.Show("Xóa không thành công");
+                return false;
+            }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             string tenDanhMuc = txbTenDanhMuc.Text;
-            if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+            addDanhMucToDatabase(tenDanhMuc);
+        }
+        public bool addDanhMucToDatabase(string tenDanhMuc)
+        {
+            if (string.IsNullOrWhiteSpace(tenDanhMuc) || string.IsNullOrEmpty(tenDanhMuc))
+            {
+                MessageBox.Show("Không thể thêm !");
+                return false;
+            }
+            else if (DanhMucDAO.Instance.CheckExist(tenDanhMuc))
+            {
                 MessageBox.Show("Đã có danh mục này không thể thêm trùng !");
+                return false;
+            }
             else
             {
                 if (DanhMucDAO.Instance.InsertDanhMuc(tenDanhMuc))
@@ -88,12 +126,15 @@ namespace QuanLyQuanCafe
                     LoadDanhMuc();
                     if (insertDanhMuc != null)
                         insertDanhMuc(this, new EventArgs());
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Thêm không thành công");
+                    return false;
+                }
             }
         }
-
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -101,7 +142,7 @@ namespace QuanLyQuanCafe
         #region Pain
         private void VeHinh(Graphics g, Rectangle rect)
         {
-            Image img =Properties.Resources.coffeeBaner;
+            Image img = Properties.Resources.coffeeBaner;
             g.DrawImage(img, rect);
         }
         private void VeChu(Graphics g, Rectangle rect)
@@ -147,8 +188,8 @@ namespace QuanLyQuanCafe
             remove { updateDanhMuc -= value; }
         }
 
-        #endregion  
+        #endregion
 
-      
+
     }
 }

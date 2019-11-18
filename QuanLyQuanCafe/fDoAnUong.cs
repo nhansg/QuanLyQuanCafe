@@ -37,16 +37,13 @@ namespace QuanLyQuanCafe
             txbDonGia.DataBindings.Add(new Binding("Text", dtgvDanhSachMon.DataSource, "DonGia"));
             txbMieuTa.DataBindings.Add(new Binding("Text", dtgvDanhSachMon.DataSource, "MieuTa"));
             txbAnh.DataBindings.Add(new Binding("Text", dtgvDanhSachMon.DataSource, "HinhAnh"));
-
-        }
-      
+        }  
         private void btnXem_Click(object sender, EventArgs e)
         {
             loadDanhSachMon();
         }
         void LoadDanhMucVaoCmbox(ComboBox cb)
         {
-
             cb.DataSource = DanhMucDAO.Instance.LayDanhMuc();
             cb.DisplayMember = "TenDanhMuc";
         }
@@ -109,7 +106,12 @@ namespace QuanLyQuanCafe
             int maDanhMuc = (cmbLoaiMon.SelectedItem as DanhMuc).MaDanhMuc;
             float donGia = (float)Convert.ToDouble(txbDonGia.Text);
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
-            if (ThucAnUongDAO.Instance.CheckExistTAU(tenTau) != null)
+
+            if(string.IsNullOrEmpty(tenTau) || donGia <-1 )
+            {
+                MessageBox.Show("Không thể nhập giá trị này!!");
+            }
+            else if (ThucAnUongDAO.Instance.CheckExistTAU(tenTau) != null)
                 MessageBox.Show("Đã có thức ăn này ! Không thể thêm trùng !!");
             else
             {
@@ -139,7 +141,6 @@ namespace QuanLyQuanCafe
             }
             
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             int maTAU = Convert.ToInt32(txbMaMon.Text);
@@ -150,8 +151,23 @@ namespace QuanLyQuanCafe
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
 
             ThucAnUong check = ThucAnUongDAO.Instance.CheckExistTAU(tenTau);
-
-            if (check.MaTAU != maTAU && check.TenTAU == tenTau)
+            if (string.IsNullOrEmpty(tenTau) || donGia < -1)
+            {
+                MessageBox.Show("Không thể nhập giá trị này!!");
+            }
+            else if (check != null && check.MaTAU == maTAU)
+            {
+                if (ThucAnUongDAO.Instance.UpdateThucAnUong(check.TenTAU, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia, maTAU))
+                {
+                    MessageBox.Show("Sửa thành công");
+                    loadDanhSachMon();
+                    if (updateFood != null)
+                        updateFood(this, new EventArgs());
+                }
+                else
+                    MessageBox.Show("Sửa không thành công");
+            }
+            else if (check != null)
                 MessageBox.Show("Tên muốn sửa đã có");
             else
             {

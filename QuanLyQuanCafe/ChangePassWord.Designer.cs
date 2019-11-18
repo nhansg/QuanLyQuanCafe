@@ -65,10 +65,10 @@
             // 
             // txbTenDangNhap
             // 
-            this.txbTenDangNhap.Location = new System.Drawing.Point(94, 7);
+            this.txbTenDangNhap.Location = new System.Drawing.Point(94, 8);
             this.txbTenDangNhap.Name = "txbTenDangNhap";
             this.txbTenDangNhap.Size = new System.Drawing.Size(150, 20);
-            this.txbTenDangNhap.TabIndex = 1;
+            this.txbTenDangNhap.TabIndex = 5;
             // 
             // label1
             // 
@@ -93,7 +93,7 @@
             this.txbTenHienThi.Location = new System.Drawing.Point(94, 6);
             this.txbTenHienThi.Name = "txbTenHienThi";
             this.txbTenHienThi.Size = new System.Drawing.Size(150, 20);
-            this.txbTenHienThi.TabIndex = 2;
+            this.txbTenHienThi.TabIndex = 6;
             // 
             // label2
             // 
@@ -111,14 +111,14 @@
             this.panel3.Location = new System.Drawing.Point(0, 81);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(260, 33);
-            this.panel3.TabIndex = 1;
+            this.panel3.TabIndex = 2;
             // 
             // txbMatKhau
             // 
             this.txbMatKhau.Location = new System.Drawing.Point(94, 6);
             this.txbMatKhau.Name = "txbMatKhau";
             this.txbMatKhau.Size = new System.Drawing.Size(150, 20);
-            this.txbMatKhau.TabIndex = 3;
+            this.txbMatKhau.TabIndex = 7;
             this.txbMatKhau.UseSystemPasswordChar = true;
             // 
             // label3
@@ -137,14 +137,14 @@
             this.panel4.Location = new System.Drawing.Point(0, 120);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(260, 33);
-            this.panel4.TabIndex = 1;
+            this.panel4.TabIndex = 3;
             // 
             // txbMatKhauMoi
             // 
             this.txbMatKhauMoi.Location = new System.Drawing.Point(94, 8);
             this.txbMatKhauMoi.Name = "txbMatKhauMoi";
             this.txbMatKhauMoi.Size = new System.Drawing.Size(150, 20);
-            this.txbMatKhauMoi.TabIndex = 4;
+            this.txbMatKhauMoi.TabIndex = 8;
             this.txbMatKhauMoi.UseSystemPasswordChar = true;
             // 
             // label4
@@ -163,14 +163,14 @@
             this.panel5.Location = new System.Drawing.Point(0, 159);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 33);
-            this.panel5.TabIndex = 1;
+            this.panel5.TabIndex = 4;
             // 
             // txbNhapLai
             // 
             this.txbNhapLai.Location = new System.Drawing.Point(94, 8);
             this.txbNhapLai.Name = "txbNhapLai";
             this.txbNhapLai.Size = new System.Drawing.Size(150, 20);
-            this.txbNhapLai.TabIndex = 5;
+            this.txbNhapLai.TabIndex = 9;
             this.txbNhapLai.UseSystemPasswordChar = true;
             // 
             // label5
@@ -187,7 +187,7 @@
             this.btnCapNhap.Location = new System.Drawing.Point(114, 259);
             this.btnCapNhap.Name = "btnCapNhap";
             this.btnCapNhap.Size = new System.Drawing.Size(75, 23);
-            this.btnCapNhap.TabIndex = 2;
+            this.btnCapNhap.TabIndex = 10;
             this.btnCapNhap.Text = "Cập nhập";
             this.btnCapNhap.UseVisualStyleBackColor = true;
             this.btnCapNhap.Click += new System.EventHandler(this.btnCapNhap_Click);
@@ -198,7 +198,7 @@
             this.btnHuy.Location = new System.Drawing.Point(195, 259);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(75, 23);
-            this.btnHuy.TabIndex = 3;
+            this.btnHuy.TabIndex = 11;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);

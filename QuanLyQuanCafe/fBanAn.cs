@@ -18,13 +18,13 @@ namespace QuanLyQuanCafe
         {
             InitializeComponent();
             LoadfBanAn();
-     
+
         }
         void LoadfBanAn()
         {
             LoadListTalbe();
             BindingTalbe();
-            
+
         }
         void LoadListTalbe()
         {
@@ -42,7 +42,6 @@ namespace QuanLyQuanCafe
             txbTenBan.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "TenBan"));
             nmKhuVuc.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "KhuVuc"));
             txbMieuTa.DataBindings.Add(new Binding("Text", dtgvBanAn.DataSource, "MieuTa"));
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -50,8 +49,11 @@ namespace QuanLyQuanCafe
             string tenBan = txbTenBan.Text;
             string khuVuc = nmKhuVuc.Value.ToString();
             string mieuTa = txbMieuTa.Text;
-            
-            if (TableDAO.Instance.InsertBanAn(tenBan,khuVuc,mieuTa))
+            if (string.IsNullOrEmpty(tenBan))
+            {
+                MessageBox.Show("Vui lòng nhập tên bàn");
+            }
+            else if (TableDAO.Instance.InsertBanAn(tenBan, khuVuc, mieuTa))
             {
                 MessageBox.Show("Thêm thành công");
                 LoadListTalbe();
@@ -61,16 +63,19 @@ namespace QuanLyQuanCafe
             else
                 MessageBox.Show("Thêm không thành công");
         }
-        
+
         private void btnSua_Click(object sender, EventArgs e)
         {
             string tenBan = txbTenBan.Text;
             string khuVuc = nmKhuVuc.Text;
             string mieuTa = txbMieuTa.Text;
             int maBan = Convert.ToInt32(txbMaBan.Text);
-            
 
-            if (TableDAO.Instance.UpdateBanAn(maBan,tenBan, khuVuc,mieuTa))
+            if (string.IsNullOrEmpty(tenBan))
+            {
+                MessageBox.Show("Vui lòng nhập tên bàn");
+            }
+            else if (TableDAO.Instance.UpdateBanAn(maBan, tenBan, khuVuc, mieuTa))
             {
                 MessageBox.Show("Sửa thành công");
                 LoadListTalbe();
@@ -99,7 +104,7 @@ namespace QuanLyQuanCafe
             }
             else
                 MessageBox.Show("Không có bàn để xóa");
-           
+
         }
 
         #region events
@@ -141,6 +146,6 @@ namespace QuanLyQuanCafe
 
         }
     }
-        
+
 }
 

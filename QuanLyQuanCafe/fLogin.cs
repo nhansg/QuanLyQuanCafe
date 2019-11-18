@@ -30,11 +30,11 @@ namespace QuanLyQuanCafe
 
         private void fLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn thoát chương trình ", "Thông báo", 
+            if (MessageBox.Show("Bạn có muốn thoát chương trình ", "Thông báo",
                 MessageBoxButtons.OKCancel) != DialogResult.OK)
             {
                 e.Cancel = true;
-            }       
+            }
         }
         private void fLogin_Load(object sender, EventArgs e)
         {
@@ -45,20 +45,25 @@ namespace QuanLyQuanCafe
         {
             string tenTaiKhoan = txbTenDangNhap.Text;
             string passWord = txbPassWord.Text;
-            if (Login(tenTaiKhoan, passWord))
+            CheckLogin(tenTaiKhoan, passWord);
+        }
+        public bool CheckLogin(string tenTaiKhoan, string passW)
+        {
+            if (Login(tenTaiKhoan,passW))
             {
                 Account loginAccount = AccountDAO.Instance.AccountByUser(tenTaiKhoan);
                 fManager f = new fManager(loginAccount);
                 this.Hide();
                 f.ShowDialog();
                 this.Show();
+                return true;
             }
             else
             {
                 MessageBox.Show("Sai tên tài khoản và mật khẩu");
+                return false;
             }
         }
-
         private void fLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

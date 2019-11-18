@@ -27,6 +27,7 @@ namespace QuanLyQuanCafe
 
             LoginAccount = acc;
         }
+        public ChangePassWord() { }
         #region Pain
         private void VeHinh(Graphics g, Rectangle rect)
         {
@@ -67,29 +68,43 @@ namespace QuanLyQuanCafe
         {
             this.Close();
         }
-        void UpdateAccount()
+        public bool UpdateAccount(string tenTaiKhoan, string tenHienThi, string passWord, string newPass, string nhapLai)
         {
-            string tenHienThi = txbTenHienThi.Text;
-            string passWord = txbMatKhau.Text;
-            string newPass = txbMatKhauMoi.Text;
-            string nhapLai = txbNhapLai.Text;
-            string tenTaiKhoan = txbTenDangNhap.Text;
-
-            if(!newPass.Equals(nhapLai))
+            if (AccountDAO.Instance.AccountByUser(tenTaiKhoan) == null)
             {
-                MessageBox.Show("Mật khẩu không trùng nhau. Vui lòng nhập lại");
+                MessageBox.Show("Tài khoản không tồn tại !!");
+                try
+                {
+                    txbTenHienThi.Clear();
+                    txbMatKhau.Clear();
+                    txbMatKhauMoi.Clear();
+                    txbNhapLai.Clear();
+                    txbTenDangNhap.Clear();
+                }
+                catch { }
+                return false;
             }
             else
             {
-                if(AccountDAO.Instance.UpdateAccount(tenTaiKhoan,tenHienThi,passWord,newPass))
+                if (!newPass.Equals(nhapLai))
                 {
-                    MessageBox.Show("Cập nhập thành công");
-                    if (updateAccount != null)
-                        updateAccount(this,new AccountEvent( AccountDAO.Instance.AccountByUser(tenTaiKhoan)));
+                    MessageBox.Show("Mật khẩu không trùng nhau. Vui lòng nhập lại");
+                    return false;
                 }
                 else
                 {
-                    MessageBox.Show("Vui lòng điền đúng mật khẩu");
+                    if (AccountDAO.Instance.UpdateAccount(tenTaiKhoan, tenHienThi, passWord, newPass))
+                    {
+                        MessageBox.Show("Cập nhập thành công");
+                        if (updateAccount != null)
+                            updateAccount(this, new AccountEvent(AccountDAO.Instance.AccountByUser(tenTaiKhoan)));
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng điền đúng mật khẩu");
+                        return false;
+                    }
                 }
             }
         }
@@ -101,7 +116,12 @@ namespace QuanLyQuanCafe
         }
         private void btnCapNhap_Click(object sender, EventArgs e)
         {
-            UpdateAccount();
+            string tenHienThi = txbTenHienThi.Text;
+            string passWord = txbMatKhau.Text;
+            string newPass = txbMatKhauMoi.Text;
+            string nhapLai = txbNhapLai.Text;
+            string tenTaiKhoan = txbTenDangNhap.Text;
+            UpdateAccount(tenTaiKhoan, tenHienThi, passWord, newPass, nhapLai);
         }
         public class AccountEvent:EventArgs
         {

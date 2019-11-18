@@ -44,7 +44,14 @@ namespace QuanLyQuanCafe.DAO
             DataTable result = DataProvider.Instance.ExecuteQuery(query,new object[]{tenTaiKhoan,passWord});
             return result.Rows.Count > 0;
         }
+        public int countAcc()
+        {
+            string query = "Select * from dbo.Account";
 
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            int a = result.Rows.Count;
+            return a;
+        }
         public Account AccountByUser(string tenTaiKhoan)
         {
             string query = "UserSearch @Username ";
