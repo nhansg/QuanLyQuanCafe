@@ -27,7 +27,8 @@ namespace QuanLyQuanCafe
         void loadDanhSachMon()
         {
             bindingThucAnUong.DataSource = ThucAnUongDAO.Instance.LayThucAnUong();
-            dtgvDanhSachMon.DataSource = bindingThucAnUong;
+            try { dtgvDanhSachMon.DataSource = bindingThucAnUong; }
+            catch { }
             
         }
         void BindingThucAnUong()
@@ -50,19 +51,6 @@ namespace QuanLyQuanCafe
     
         private void txbMaMon_TextChanged(object sender, EventArgs e)
         {
-            if (dtgvDanhSachMon.SelectedCells.Count > 1)
-            {
-                if (txbAnh.Text == "")
-                {
-                    Image image = Properties.Resources.NotFound;
-                    picThucAn.Image = image;
-                }
-                else
-                {
-                    Image image = Image.FromFile(@txbAnh.Text);
-                    picThucAn.Image = image;
-                }
-            }
             try
             {
                 if (dtgvDanhSachMon.SelectedCells.Count >= 1)
@@ -107,12 +95,16 @@ namespace QuanLyQuanCafe
             float donGia = (float)Convert.ToDouble(txbDonGia.Text);
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
 
-            if(string.IsNullOrEmpty(tenTau) || donGia <-1 )
+            addFoodToDatabase(tenTau, mieuTa, maDanhMuc, donGia, giamGia);
+        }
+        public bool addFoodToDatabase(string tenTau ,string mieuTa ,int maDanhMuc ,float donGia ,float giamGia )
+        {
+            if (string.IsNullOrEmpty(tenTau) || string.IsNullOrWhiteSpace(tenTau) || donGia < 0 || 
+                giamGia < 0 || ThucAnUongDAO.Instance.CheckExistTAU(tenTau) != null)
             {
                 MessageBox.Show("Không thể nhập giá trị này!!");
+                return false;
             }
-            else if (ThucAnUongDAO.Instance.CheckExistTAU(tenTau) != null)
-                MessageBox.Show("Đã có thức ăn này ! Không thể thêm trùng !!");
             else
             {
                 if (ThucAnUongDAO.Instance.InsertThucAnUong(tenTau, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia))
@@ -121,11 +113,14 @@ namespace QuanLyQuanCafe
                     loadDanhSachMon();
                     if (insertFood != null)
                         insertFood(this, new EventArgs());
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Thêm không thành công");
+                    return false;
+                }
             }
-
         }
 
         private void btnChonAnh_Click(object sender, EventArgs e)
@@ -150,10 +145,15 @@ namespace QuanLyQuanCafe
             float donGia = (float)Convert.ToDouble(txbDonGia.Text);
             float giamGia = (float)Convert.ToDouble(txbGiamGia.Text);
 
+            updateFoodInDatabase(maTAU, tenTau, mieuTa, maDanhMuc, donGia, giamGia);
+        }
+        public bool updateFoodInDatabase(int maTAU ,string tenTau ,string mieuTa ,int maDanhMuc ,float donGia,float giamGia )
+        {
             ThucAnUong check = ThucAnUongDAO.Instance.CheckExistTAU(tenTau);
-            if (string.IsNullOrEmpty(tenTau) || donGia < -1)
+            if (string.IsNullOrEmpty(tenTau) || string.IsNullOrWhiteSpace(tenTau) || donGia < 0 || giamGia < 0)
             {
                 MessageBox.Show("Không thể nhập giá trị này!!");
+                return false;
             }
             else if (check != null && check.MaTAU == maTAU)
             {
@@ -163,12 +163,19 @@ namespace QuanLyQuanCafe
                     loadDanhSachMon();
                     if (updateFood != null)
                         updateFood(this, new EventArgs());
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Sửa không thành công");
+                    return false;
+                }
             }
             else if (check != null)
+            {
                 MessageBox.Show("Tên muốn sửa đã có");
+                return false;
+            }
             else
             {
                 if (ThucAnUongDAO.Instance.UpdateThucAnUong(tenTau, txbAnh.Text, maDanhMuc, donGia, mieuTa, giamGia, maTAU))
@@ -177,24 +184,35 @@ namespace QuanLyQuanCafe
                     loadDanhSachMon();
                     if (updateFood != null)
                         updateFood(this, new EventArgs());
+                    return true;
                 }
                 else
+                {
                     MessageBox.Show("Sửa không thành công");
+                    return false;
+                }
             }
         }
-
         private void btnXoa_Click(object sender, EventArgs e)
         {
             int maTAU = Convert.ToInt32(txbMaMon.Text);
-            if (ThucAnUongDAO.Instance.DeleteTAU(maTAU))
+            deleteFoodInDatabase(maTAU);
+        }
+        public bool deleteFoodInDatabase(int maTau)
+        {
+            if (ThucAnUongDAO.Instance.DeleteTAU(maTau))
             {
                 MessageBox.Show("Xóa thành công");
                 loadDanhSachMon();
                 if (deleteFood != null)
-                    deleteFood(this,new EventArgs());
+                    deleteFood(this, new EventArgs());
+                return true;
             }
             else
+            {
                 MessageBox.Show("Xóa không thành công");
+                return false;
+            }
         }
         List<ThucAnUong> SearchTaU(string name)
         {

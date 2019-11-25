@@ -29,7 +29,8 @@ namespace QuanLyQuanCafe
         void LoadListTalbe()
         {
             bindingTable.DataSource = TableDAO.Instance.LoadTableList();
-            dtgvBanAn.DataSource = bindingTable;
+            try { dtgvBanAn.DataSource = bindingTable; }
+            catch { }
         }
 
         private void btnXem_Click(object sender, EventArgs e)
@@ -49,9 +50,15 @@ namespace QuanLyQuanCafe
             string tenBan = txbTenBan.Text;
             string khuVuc = nmKhuVuc.Value.ToString();
             string mieuTa = txbMieuTa.Text;
+            addTableToDatabase(tenBan, khuVuc, mieuTa);
+
+        }
+        public bool addTableToDatabase(string tenBan,string khuVuc,string mieuTa)
+        {
             if (string.IsNullOrEmpty(tenBan))
             {
                 MessageBox.Show("Vui lòng nhập tên bàn");
+                return false;
             }
             else if (TableDAO.Instance.InsertBanAn(tenBan, khuVuc, mieuTa))
             {
@@ -59,9 +66,13 @@ namespace QuanLyQuanCafe
                 LoadListTalbe();
                 if (insertTable != null)
                     insertTable(this, new EventArgs());
+                return true;
             }
             else
+            {
                 MessageBox.Show("Thêm không thành công");
+                return false;
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)

@@ -313,21 +313,29 @@ namespace QuanLyQuanCafe
         }
         private void btnThanhToan_Click(object sender, EventArgs e)
         {
-            Table table = lsvBill.Tag as Table;
-            float tongTien = (float)Convert.ToDouble(txbTongTien.Text);
-            int maHoaDon = HoaDonDAO.Instance.LayHoaDonTuMaBan(table.MaBan);
-            if (maHoaDon != -1)
+            try
             {
-                if (MessageBox.Show("Bạn có muốn thanh toán hóa đơn cho bàn" + table.TenBan + " " + table.KhuVuc, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                Table table = lsvBill.Tag as Table;
+                if(table == null)
                 {
-                    HoaDonDAO.Instance.checkOut(maHoaDon,(float)tongTien);
-                    ShowHoaDon(table.MaBan);
-                    LoadTable();
+                    MessageBox.Show("Vui lòng chọn bàn để thanh toán !!");
+                    return;
                 }
+                float tongTien = (float)Convert.ToDouble(txbTongTien.Text);              
+                int maHoaDon = HoaDonDAO.Instance.LayHoaDonTuMaBan(table.MaBan);          
+                if (maHoaDon != -1)
+                {
+                    if (MessageBox.Show("Bạn có muốn thanh toán hóa đơn cho bàn" + table.TenBan + " " + table.KhuVuc, "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                    {
+                        HoaDonDAO.Instance.checkOut(maHoaDon, (float)tongTien);
+                        ShowHoaDon(table.MaBan);
+                        LoadTable();
+                    }
+                }
+                else
+                    return;
             }
-            
-            else
-                return;
+            catch { }
         }
         #endregion ChonMon
 
@@ -443,16 +451,22 @@ namespace QuanLyQuanCafe
         
         private void btnThietLapMon_Click(object sender, EventArgs e)
         {
-            float giaGiam = (float)Convert.ToDouble(txbGiaMon.Text);
-            int maTAU = (cbThucAnUong.SelectedItem as ThucAnUong).MaTAU;
-            if (ThucAnUongDAO.Instance.UpdateGiamGia(giaGiam,maTAU))
+            try
             {
-                MessageBox.Show("Thêm thành công");
-                if (updateFood != null)
-                    updateFood(this, new EventArgs());
+                float giaGiam = (float)Convert.ToDouble(txbGiaMon.Text);
+                int maTAU = (cbThucAnUong.SelectedItem as ThucAnUong).MaTAU;
+                if(giaGiam < 0)
+                    MessageBox.Show("Không thể nhập giá trị < 0");
+                else if (ThucAnUongDAO.Instance.UpdateGiamGia(giaGiam, maTAU))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    if (updateFood != null)
+                        updateFood(this, new EventArgs());
+                }
+                else
+                    MessageBox.Show("Thêm không thành công");
             }
-            else
-                MessageBox.Show("Thêm không thành công");
+            catch { }
 
         }
         private event EventHandler updateFood;
@@ -470,48 +484,57 @@ namespace QuanLyQuanCafe
 
         private void btnThietLapBill_Click(object sender, EventArgs e)
         {
-            float giaGiam = (float)Convert.ToDouble(txbGiamTong.Text);
-            float tongTien = (float)Convert.ToDouble(txbTongTien.Text);
-            int maHoaDon = (int)nmGiamGiaTong.Value;
-            if (giaGiam < tongTien)
+            try
             {
-                if (HoaDonDAO.Instance.UpdateGiamGia(giaGiam, maHoaDon))
+                float giaGiam = (float)Convert.ToDouble(txbGiamTong.Text);
+                float tongTien = (float)Convert.ToDouble(txbTongTien.Text);
+                int maHoaDon = (int)nmGiamGiaTong.Value;
+                if(giaGiam < 0)
+                    MessageBox.Show("Không thể nhập giá trị < 0");
+                else if (giaGiam < tongTien )
                 {
-                    MessageBox.Show("Giảm giá thành công");
+                    if (HoaDonDAO.Instance.UpdateGiamGia(giaGiam, maHoaDon))
+                    {
+                        MessageBox.Show("Giảm giá thành công");
+                    }
+                    else
+                        MessageBox.Show("Giarm giá  không thành công");
+                    tongTien = tongTien - giaGiam;
                 }
                 else
-                    MessageBox.Show("Giarm giá  không thành công");
-                tongTien = tongTien - giaGiam;
+                {
+                    MessageBox.Show("Không thể nhập giá trị nhiều hơn tổng tiền");
+                }
+
+                txbTongTien.Text = tongTien.ToString();
             }
-            else 
-            {
-                MessageBox.Show("Không thể nhập giá trị nhiều hơn tổng tiền");
-            }
-            
-            txbTongTien.Text = tongTien.ToString();
-            
+            catch { }
         }
 
   
 
         private void txbTienDua_KeyDown(object sender, KeyEventArgs e)
         {
-            float tienDua = (float)Convert.ToDouble(txbTienDua.Text);
-            float tongTien = (float)Convert.ToDouble(txbTongTien.Text);
-            float tienThua;
-            if(e.KeyCode == Keys.Enter)
+            try
             {
-                if (tienDua < tongTien)
+                float tienDua = (float)Convert.ToDouble(txbTienDua.Text);
+                float tongTien = (float)Convert.ToDouble(txbTongTien.Text);
+                float tienThua;
+                if (e.KeyCode == Keys.Enter)
                 {
-                    MessageBox.Show("Đưa thiếu tiền");
+                    if (tienDua < tongTien || tienDua < 0)
+                    {
+                        MessageBox.Show("Đưa thiếu tiền");
+                    }
+                    else
+                    {
+                        tienThua = tienDua - tongTien;
+                        txbTienDu.Text = tienThua.ToString();
+                    }
+
                 }
-                else
-                {
-                    tienThua = tienDua - tongTien;
-                    txbTienDu.Text = tienThua.ToString();
-                }
-                
             }
+            catch { }
         }
 
         private void hóaĐơnToolStripMenuItem_Click(object sender, EventArgs e)
